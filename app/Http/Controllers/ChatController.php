@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewChatLead;
 use App\Models\ChatLead;
 use App\Models\ChatMessage;
 use App\Services\KnowledgeService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 
 class ChatController extends Controller
 {
@@ -26,6 +28,8 @@ class ChatController extends Controller
         $messages      = $request->input('messages');
         $sessionToken  = $request->input('session_token');
         $lastUserMsg   = collect($messages)->last(fn ($m) => $m['role'] === 'user')['content'] ?? '';
+
+        $isNewLead = ! ChatLead::where('session_token', $sessionToken)->exists();
 
         $lead = $this->resolveLead($request, $sessionToken, $lastUserMsg);
 
@@ -54,10 +58,44 @@ class ChatController extends Controller
         ChatMessage::create(['lead_id' => $lead->id, 'role' => 'user',      'content' => $lastUserMsg]);
         ChatMessage::create(['lead_id' => $lead->id, 'role' => 'assistant', 'content' => $aiMessage]);
 
+        if ($isNewLead && ! $this->isSpam($lastUserMsg)) {
+            Mail::to('atanasgrozdev@yahoo.com')->send(new NewChatLead($lead, $aiMessage));
+        }
+
         return response()->json([
             'message'          => $aiMessage,
             'suggest_whatsapp' => $suggestWhatsapp,
         ]);
+    }
+
+    private function isSpam(string $message): bool
+    {
+        $clean = trim($message);
+
+        // Too short to be a real enquiry
+        if (mb_strlen($clean) < 10) {
+            return true;
+        }
+
+        // Common test / throwaway phrases
+        $spamPatterns = [
+            '/^(test|testing|hi|hey|hello|helo|hola|yo|sup|check|asdf|qwerty|aaa+|bbb+|123+|xxx+)[\s!?.]*$/i',
+            '/^[^a-z\p{L}]+$/iu', // only symbols / numbers, no real letters
+        ];
+
+        foreach ($spamPatterns as $pattern) {
+            if (preg_match($pattern, $clean)) {
+                return true;
+            }
+        }
+
+        // High ratio of non-letter characters suggests gibberish
+        $letterCount = preg_match_all('/\p{L}/u', $clean);
+        if ($letterCount / mb_strlen($clean) < 0.4) {
+            return true;
+        }
+
+        return false;
     }
 
     private function resolveLead(Request $request, string $token, string $firstMessage): ChatLead
