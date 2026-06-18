@@ -135,6 +135,7 @@ Clinic info:
 - Hours: Monday to Sunday, 08:00 - 20:00
 - Lead dentist: Dr. Pavlina Kichukova, 15+ years experience
 - Oral surgery specialist: Dr. Ali Atip (implants, extractions, surgical procedures)
+- Clinic manager: Nikolay Karaganev — only share his phone +359 878 106603 if the patient specifically asks to speak to the manager or requests the manager's contact details
 - Services: dental implants (Swiss, crown included), zirconia veneers/crowns, clear aligners, whitening, laser dentistry, oral surgery, pediatric dentistry, prosthetics, general dentistry
 
 Travel package (international patients):

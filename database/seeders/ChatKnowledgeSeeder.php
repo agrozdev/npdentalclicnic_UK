@@ -60,11 +60,12 @@ Working hours: Monday to Sunday, 08:00 to 20:00 (7 days a week).',
             [
                 'type'     => 'faq',
                 'title'    => 'About NP Dental Clinic and our team',
-                'keywords' => 'about, team, doctor, dentist, experience, qualifications, specialist, dr, кичукова, атип, хирург, екип, лекар, oral surgery, surgeon',
+                'keywords' => 'about, team, doctor, dentist, experience, qualifications, specialist, dr, кичукова, атип, хирург, екип, лекар, oral surgery, surgeon, manager, clinic manager, николай, karaGanev, Nikolay',
                 'content'  => 'NP Dental Clinic is a modern private dental practice in Sofia, Bulgaria. Our team includes:
 
 Dr. Pavlina Kichukova — Lead dentist with over 15 years of experience, known for her professionalism, personalised care, and attention to detail.
 Dr. Ali Atip — Oral surgery specialist, responsible for implant placements, extractions, and all surgical procedures.
+Nikolay Karaganev — Clinic Manager. You can reach Nikolay directly on +359 878 106603.
 
 Our team covers all dental disciplines using the latest technology and modern treatment methods. We are open 7 days a week from 8:00 to 20:00.
 
@@ -187,18 +188,85 @@ You only need to book and pay for your own plane tickets — we handle the rest.
                 'type'     => 'pricing',
                 'title'    => 'Pricing overview',
                 'keywords' => 'price, prices, cost, how much, fee, rates, цена, цени, колко, тарифа, pricing list',
-                'content'  => 'All prices below are in GBP. Hotel and airport transfer are included for international patients — you only pay for flights. All procedures span 3 visits on 3 consecutive days (or 2-3 trips for implants).
-Examinations: from £40 | Emergency exam: £90
-Implants (Swiss, crown included): £1,400 - £1,800
+                'content'  => 'All prices are in GBP. Hotel and airport transfer are included for international patients — you only pay for flights.
+
+EXAMINATIONS & CONSULTATIONS
+Standard examination: £40
+Emergency examination: £90
+Exam + consultation + scan reading (oral surgeon): £150
+Orthodontic examination: £120
+
+IMPLANTOLOGY
+Swiss implants (crown included): £1,400 - £1,800
+
+PROSTHETICS (CROWNS & DENTURES)
 Zirconia crown or veneer: £450 - £500
 Metal-ceramic crown: £300
-Clear aligners (Invisalign): £4,000 - £7,000
-Office whitening: £360 - £500 | Home whitening kit: £250
-Scale and polish: £110 - £140
-Filling: £110 - £160 | Front tooth bonding: £250
-Molar extraction: £180 | Wisdom tooth: £300 - £850
-Root canal (single root): £350 - £450 | Multi-root: £500 - £850
-For a full personalised quote contact us on WhatsApp.',
+Temporary plastic crown: £100
+Crown removal: £50
+Standard denture: £500
+Silicone flexible denture: £750
+Partial silicone denture (up to 3 teeth): £450
+Inlay/Onlay/Overlay/Pinlay: £180 - £380
+
+CONSERVATIVE DENTISTRY
+Filling: £110 - £160
+Front tooth bonding: £250
+Baby tooth filling: £130 - £180
+Anesthesia: £30
+Root canal single-root (pulpitis): £350 - £450
+Root canal multi-root (pulpitis): £500 - £850
+Per canal treatment: £250
+Calcium hydroxide (CA-OH2) application: £30
+Icon therapy (early decay): £160
+Laser root canal processing: £120
+
+ORAL SURGERY
+Single-root extraction: £130
+Molar extraction: £180
+Wisdom tooth extraction: £300 - £850
+Baby tooth extraction: £70
+
+PREVENTION & WHITENING
+Scale and polish (tartar removal): £110 - £140
+Air polishing (soda): £70
+Aqua Care polishing: £180
+Professional oral hygiene: £60
+Sealant: £60
+Home whitening kit: £250
+In-clinic (office) whitening: £360 - £500
+
+ORTHODONTICS
+Clear aligners: £4,000 - £7,000
+Myobrace trainer (adults): £650 per phase
+Myobrace trainer (children): £550 per phase
+
+OTHER
+Bruxism (night guard) splint: £180
+Tooth splinting: £300
+Segmental X-ray: £25
+X-ray + reading (consultation): £70
+
+For a personalised quote contact us on WhatsApp.',
+                'priority' => 10,
+            ],
+            [
+                'type'     => 'pricing',
+                'title'    => 'Full dental price list — all services in GBP',
+                'keywords' => 'full price list, all prices, complete prices, pricelist, tariff, scale, examine, extraction, root canal, filling, implant, crown, veneer, denture, whitening, aligner, splint, sealant, x-ray, xray, canal, pulpitis, icon, aqua, tartar, calcium, bruxism, splinting, myobrace, пълна ценова листа, всички цени',
+                'content'  => 'Complete NP Dental Clinic price list — all prices in GBP.
+
+Examinations: Standard £40 | Emergency £90 | Surgeon consultation + scan £150 | Orthodontic £120
+Implants: Swiss implant with crown £1,400 - £1,800
+Crowns & Veneers: Zirconia £450-£500 | Metal-ceramic £300 | Temporary £100 | Crown removal £50
+Dentures: Standard £500 | Silicone £750 | Partial silicone (up to 3 teeth) £450
+Inlays/Onlays: Inlay £180-£260 | Onlay £280 | Overlay £380 | Pinlay £180
+Fillings: £110-£160 | Front bonding £250 | Baby tooth £130-£180 | Anesthesia £30
+Root canals: Single-root £350-£450 | Multi-root £500-£850 | Per canal £250 | Laser canal £120 | Icon therapy £160 | CA-OH2 £30
+Extractions: Single-root £130 | Molar £180 | Wisdom tooth £300-£850 | Baby tooth £70
+Cleaning & Whitening: Scale & polish £110-£140 | Air polish £70 | Aqua Care £180 | Hygiene £60 | Sealant £60 | Home whitening £250 | In-clinic whitening £360-£500
+Orthodontics: Clear aligners £4,000-£7,000 | Myobrace adult £650/phase | Myobrace child £550/phase
+Other: Night guard £180 | Tooth splinting £300 | X-ray £25 | X-ray + reading £70',
                 'priority' => 10,
             ],
             [
