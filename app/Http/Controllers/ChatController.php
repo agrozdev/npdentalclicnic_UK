@@ -60,9 +60,16 @@ class ChatController extends Controller
 
         if ($isNewLead && ! $this->isSpam($lastUserMsg)) {
             $allMessages = array_merge($messages, [['role' => 'assistant', 'content' => $aiMessage]]);
-            Mail::to('atanasgorzdev@yahoo.com')
-                ->cc('info@npdentalclinic.com')
-                ->send(new NewChatLead($lead, $allMessages, $aiMessage));
+            try {
+                Mail::to('atanasgorzdev@yahoo.com')
+                    ->cc('info@npdentalclinic.com')
+                    ->send(new NewChatLead($lead, $allMessages, $aiMessage));
+            } catch (\Throwable $e) {
+                \Log::error('Chat lead email failed: ' . $e->getMessage(), [
+                    'lead_id' => $lead->id,
+                    'trace'   => $e->getTraceAsString(),
+                ]);
+            }
         }
 
         return response()->json([

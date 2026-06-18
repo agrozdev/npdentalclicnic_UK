@@ -56,8 +56,9 @@
   </div>
   @endforeach
 
-  {{-- append the latest AI reply if not already in messages --}}
-  @if(empty($messages) || end($messages)['role'] !== 'assistant')
+  {{-- append the latest AI reply if not already the last message --}}
+  @php $lastMsg = !empty($messages) ? $messages[array_key_last($messages)] : null; @endphp
+  @if(!$lastMsg || $lastMsg['role'] !== 'assistant')
   <div class="bubble bubble-assistant">
     <div class="bubble-role role-assistant">AI Assistant</div>
     {{ $aiReply }}
