@@ -9,6 +9,7 @@ use App\Services\KnowledgeService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class ChatController extends Controller
@@ -65,7 +66,7 @@ class ChatController extends Controller
                     ->cc('info@npdentalclinic.com')
                     ->send(new NewChatLead($lead, $allMessages, $aiMessage));
             } catch (\Throwable $e) {
-                \Log::error('Chat lead email failed: ' . $e->getMessage(), [
+                Log::error('Chat lead email failed: ' . $e->getMessage(), [
                     'lead_id' => $lead->id,
                     'trace'   => $e->getTraceAsString(),
                 ]);

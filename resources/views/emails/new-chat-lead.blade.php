@@ -18,12 +18,15 @@
   .bubble-role { font-size: 10px; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px; }
   .role-user { color: #888; }
   .role-assistant { color: #b8860b; }
+  .view-link { display: inline-block; margin: 0 0 20px; padding: 10px 20px; background: #b8860b; color: #fff !important; text-decoration: none; border-radius: 5px; font-size: 14px; font-weight: bold; }
   .footer { font-size: 12px; color: #aaa; margin-top: 24px; text-align: center; }
 </style>
 </head>
 <body>
 <div class="card">
   <h2>New Chat Enquiry</h2>
+
+  <a class="view-link" href="{{ url('/backoffice/chat-leads/' . $lead->id) }}">View Full Conversation →</a>
 
   <div class="label">Received</div>
   <div class="value">{{ $lead->created_at->format('d M Y, H:i') }} UTC</div>

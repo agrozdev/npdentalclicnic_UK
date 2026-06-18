@@ -24,5 +24,13 @@ class DatabaseSeeder extends Seeder
                 'password' => \Illuminate\Support\Facades\Hash::make('w3bd3v..'),
             ]
         );
+
+        User::firstOrCreate(
+            ['email' => 'info@npdentalclinic.com'],
+            [
+                'name'     => 'NP Dental Clinic',
+                'password' => \Illuminate\Support\Facades\Hash::make('P@rol@112233'),
+            ]
+        );
     }
 }
