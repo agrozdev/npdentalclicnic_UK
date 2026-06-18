@@ -61,7 +61,7 @@ class ChatController extends Controller
         if ($isNewLead && ! $this->isSpam($lastUserMsg)) {
             $allMessages = array_merge($messages, [['role' => 'assistant', 'content' => $aiMessage]]);
             try {
-                Mail::to('atanasgorzdev@yahoo.com')
+                Mail::to('atanasgrozdev@yahoo.com')
                     ->cc('info@npdentalclinic.com')
                     ->send(new NewChatLead($lead, $allMessages, $aiMessage));
             } catch (\Throwable $e) {
