@@ -6,11 +6,18 @@
 <title>New Chat Enquiry</title>
 <style>
   body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 20px; }
-  .card { background: #fff; border-radius: 8px; max-width: 600px; margin: 0 auto; padding: 30px; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+  .card { background: #fff; border-radius: 8px; max-width: 620px; margin: 0 auto; padding: 30px; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
   h2 { color: #b8860b; margin-top: 0; }
-  .label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px; }
+  .label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px; }
   .value { font-size: 15px; color: #222; margin-bottom: 16px; word-break: break-word; }
-  .msg-box { background: #f9f6ee; border-left: 4px solid #b8860b; padding: 12px 16px; border-radius: 4px; margin-bottom: 16px; white-space: pre-wrap; }
+  .divider { border: none; border-top: 1px solid #eee; margin: 20px 0; }
+  .conversation-title { font-size: 13px; font-weight: bold; color: #555; margin-bottom: 12px; text-transform: uppercase; letter-spacing: .5px; }
+  .bubble { padding: 10px 14px; border-radius: 6px; margin-bottom: 10px; font-size: 14px; line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
+  .bubble-user { background: #f0f0f0; border-left: 4px solid #999; color: #333; }
+  .bubble-assistant { background: #f9f6ee; border-left: 4px solid #b8860b; color: #222; }
+  .bubble-role { font-size: 10px; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px; }
+  .role-user { color: #888; }
+  .role-assistant { color: #b8860b; }
   .footer { font-size: 12px; color: #aaa; margin-top: 24px; text-align: center; }
 </style>
 </head>
@@ -36,11 +43,26 @@
   <div class="value">{{ $lead->email }}</div>
   @endif
 
-  <div class="label">First message</div>
-  <div class="msg-box">{{ $lead->first_message }}</div>
+  <hr class="divider">
 
-  <div class="label">AI reply</div>
-  <div class="msg-box">{{ $aiReply }}</div>
+  <div class="conversation-title">Full conversation</div>
+
+  @foreach($messages as $msg)
+  <div class="bubble {{ $msg['role'] === 'user' ? 'bubble-user' : 'bubble-assistant' }}">
+    <div class="bubble-role {{ $msg['role'] === 'user' ? 'role-user' : 'role-assistant' }}">
+      {{ $msg['role'] === 'user' ? 'Patient' : 'AI Assistant' }}
+    </div>
+    {{ $msg['content'] }}
+  </div>
+  @endforeach
+
+  {{-- append the latest AI reply if not already in messages --}}
+  @if(empty($messages) || end($messages)['role'] !== 'assistant')
+  <div class="bubble bubble-assistant">
+    <div class="bubble-role role-assistant">AI Assistant</div>
+    {{ $aiReply }}
+  </div>
+  @endif
 
   <div class="footer">NP Dental Clinic — Chat Notification</div>
 </div>

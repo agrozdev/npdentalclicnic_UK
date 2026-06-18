@@ -15,6 +15,7 @@ class NewChatLead extends Mailable
 
     public function __construct(
         public readonly ChatLead $lead,
+        public readonly array $messages,
         public readonly string $aiReply,
     ) {}
 
