@@ -39,8 +39,8 @@ class PhoneLeadResource extends Resource
                         'contacted' => 'info',
                         'booked'    => 'success',
                     }),
-                TextEntry::make('call_started_at')->label('Call Started')->dateTime()->default('—'),
-                TextEntry::make('call_ended_at')->label('Call Ended')->dateTime()->default('—'),
+                TextEntry::make('call_started_at')->label('Call Started')->dateTime()->placeholder('—'),
+                TextEntry::make('call_ended_at')->label('Call Ended')->dateTime()->placeholder('—'),
                 TextEntry::make('ended_reason')->label('Ended Reason')->default('—'),
             ])->columns(3),
 
@@ -101,7 +101,7 @@ class PhoneLeadResource extends Resource
                         'booked'    => 'success',
                     })
                     ->sortable(),
-                TextColumn::make('call_started_at')->label('Called At')->dateTime()->sortable(),
+                TextColumn::make('call_started_at')->label('Called At')->dateTime()->sortable()->placeholder('—'),
             ])
             ->filters([
                 SelectFilter::make('status')->options([

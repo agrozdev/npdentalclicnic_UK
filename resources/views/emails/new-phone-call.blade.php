@@ -11,26 +11,17 @@
   .label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px; }
   .value { font-size: 15px; color: #222; margin-bottom: 16px; word-break: break-word; }
   .divider { border: none; border-top: 1px solid #eee; margin: 20px 0; }
-  .admin-btn { display: inline-block; margin: 0 0 20px; padding: 10px 20px; background: #b8860b; color: #fff !important; text-decoration: none; border-radius: 5px; font-size: 14px; font-weight: bold; }
-  .recording-btn { display: inline-block; margin: 0 0 20px 10px; padding: 10px 20px; background: #555; color: #fff !important; text-decoration: none; border-radius: 5px; font-size: 14px; font-weight: bold; }
-  .summary-box { background: #f9f6ee; border-left: 4px solid #b8860b; padding: 12px 16px; border-radius: 4px; margin-bottom: 20px; font-size: 14px; color: #333; line-height: 1.6; white-space: pre-wrap; }
-  .conversation-title { font-size: 13px; font-weight: bold; color: #555; margin-bottom: 12px; text-transform: uppercase; letter-spacing: .5px; }
-  .bubble { padding: 10px 14px; border-radius: 6px; margin-bottom: 10px; font-size: 14px; line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
-  .bubble-user      { background: #f0f0f0; border-left: 4px solid #999; color: #333; }
-  .bubble-assistant { background: #f9f6ee; border-left: 4px solid #b8860b; color: #222; }
-  .bubble-role { font-size: 10px; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px; }
-  .role-user      { color: #888; }
-  .role-assistant { color: #b8860b; }
-  .transcript-box { background: #f8f8f8; border: 1px solid #eee; border-radius: 6px; padding: 14px; font-size: 13px; color: #444; white-space: pre-wrap; line-height: 1.6; }
+  .admin-btn { display: inline-block; margin: 0 10px 20px 0; padding: 10px 20px; background: #b8860b; color: #fff !important; text-decoration: none; border-radius: 5px; font-size: 14px; font-weight: bold; }
+  .recording-btn { display: inline-block; margin: 0 0 20px; padding: 10px 20px; background: #555; color: #fff !important; text-decoration: none; border-radius: 5px; font-size: 14px; font-weight: bold; }
+  .summary-box { background: #f9f6ee; border-left: 4px solid #b8860b; padding: 12px 16px; border-radius: 4px; font-size: 14px; color: #333; line-height: 1.6; white-space: pre-wrap; }
   .footer { font-size: 12px; color: #aaa; margin-top: 24px; text-align: center; }
-  .meta { font-size: 12px; color: #888; margin-bottom: 4px; }
 </style>
 </head>
 <body>
 <div class="card">
   <h2>📞 New Phone Call</h2>
 
-  <a class="admin-btn" href="{{ url('/backoffice/phone-leads/' . $record->id) }}">View in Admin →</a>
+  <a class="admin-btn" href="{{ url('/backoffice/phone-leads/' . $record->id) }}">View Full Call in Admin →</a>
   @if($callData['recording_url'])
   <a class="recording-btn" href="{{ $callData['recording_url'] }}" target="_blank">🎧 Listen to Recording</a>
   @endif
@@ -55,24 +46,6 @@
   <hr class="divider">
   <div class="label">AI Summary</div>
   <div class="summary-box">{{ $callData['summary'] }}</div>
-  @endif
-
-  <hr class="divider">
-
-  @if(!empty($callData['messages']))
-  <div class="conversation-title">Full Conversation</div>
-  @foreach($callData['messages'] as $msg)
-  @php $role = $msg['role'] ?? 'unknown'; @endphp
-  <div class="bubble {{ $role === 'user' ? 'bubble-user' : 'bubble-assistant' }}">
-    <div class="bubble-role {{ $role === 'user' ? 'role-user' : 'role-assistant' }}">
-      {{ $role === 'user' ? 'Caller' : 'AI Assistant' }}
-    </div>
-    {{ $msg['content'] ?? '' }}
-  </div>
-  @endforeach
-  @elseif($callData['transcript'])
-  <div class="conversation-title">Transcript</div>
-  <div class="transcript-box">{{ $callData['transcript'] }}</div>
   @endif
 
   <div class="footer">NP Dental Clinic — Phone Call Notification</div>
