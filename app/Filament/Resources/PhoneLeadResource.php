@@ -50,17 +50,19 @@ class PhoneLeadResource extends Resource
             ])->columns(2),
 
             Section::make('Recording & Summary')->schema([
+                TextEntry::make('name')->label('Customer Name')->default('—'),
+                TextEntry::make('caller_number')->label('Customer Phone')->default('—'),
+                TextEntry::make('email')->label('Customer Email')->default('—'),
                 TextEntry::make('recording_url')
                     ->label('Recording')
                     ->default('—')
                     ->url(fn ($record) => $record->recording_url)
-                    ->openUrlInNewTab()
-                    ->columnSpanFull(),
+                    ->openUrlInNewTab(),
                 TextEntry::make('summary')
                     ->label('AI Summary')
                     ->default('—')
                     ->columnSpanFull(),
-            ]),
+            ])->columns(2),
 
             Section::make('Transcript')->schema([
                 TextEntry::make('transcript')
