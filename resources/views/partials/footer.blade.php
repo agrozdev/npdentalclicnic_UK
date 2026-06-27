@@ -66,6 +66,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="footer-copyright-text">
                         <p>{{ __('footer.copyright', ['year' => date('Y')]) }}</p>
+                        <p style="margin-top:4px;font-size:0.8em;opacity:0.75;">Crafted by <a href="https://www.grozdevdigital.com/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Grozdev Digital</a></p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
