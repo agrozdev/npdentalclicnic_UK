@@ -39,8 +39,24 @@ class PhoneLeadResource extends Resource
                         'contacted' => 'info',
                         'booked'    => 'success',
                     }),
-                TextEntry::make('call_started_at')->label('Call Started')->dateTime()->placeholder('—'),
-                TextEntry::make('call_ended_at')->label('Call Ended')->dateTime()->placeholder('—'),
+                TextEntry::make('call_started_at')->label('Call Started')
+                    ->formatStateUsing(function ($state) {
+                        if (! $state) return '—';
+                        try {
+                            return ($state instanceof \Carbon\Carbon ? $state : \Carbon\Carbon::parse($state))->format('d M Y, H:i');
+                        } catch (\Throwable) {
+                            return '—';
+                        }
+                    }),
+                TextEntry::make('call_ended_at')->label('Call Ended')
+                    ->formatStateUsing(function ($state) {
+                        if (! $state) return '—';
+                        try {
+                            return ($state instanceof \Carbon\Carbon ? $state : \Carbon\Carbon::parse($state))->format('d M Y, H:i');
+                        } catch (\Throwable) {
+                            return '—';
+                        }
+                    }),
                 TextEntry::make('ended_reason')->label('Ended Reason')->default('—'),
             ])->columns(3),
 
@@ -103,7 +119,15 @@ class PhoneLeadResource extends Resource
                         'booked'    => 'success',
                     })
                     ->sortable(),
-                TextColumn::make('call_started_at')->label('Called At')->dateTime()->sortable()->placeholder('—'),
+                TextColumn::make('call_started_at')->label('Called At')->sortable()
+                    ->formatStateUsing(function ($state) {
+                        if (! $state) return '—';
+                        try {
+                            return ($state instanceof \Carbon\Carbon ? $state : \Carbon\Carbon::parse($state))->format('d M Y, H:i');
+                        } catch (\Throwable) {
+                            return '—';
+                        }
+                    }),
             ])
             ->filters([
                 SelectFilter::make('status')->options([

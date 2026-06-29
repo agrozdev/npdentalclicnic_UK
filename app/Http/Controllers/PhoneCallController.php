@@ -31,6 +31,18 @@ class PhoneCallController extends Controller
         };
     }
 
+    private function parseDate(?string $value): ?\Carbon\Carbon
+    {
+        if (blank($value)) {
+            return null;
+        }
+        try {
+            return \Carbon\Carbon::parse($value);
+        } catch (\Throwable) {
+            return null;
+        }
+    }
+
     private function handleToolCall(array $payload): JsonResponse
     {
         $toolCalls = data_get($payload, 'message.toolCallList', []);
@@ -98,8 +110,8 @@ class PhoneCallController extends Controller
                 'messages'       => data_get($artifact, 'messages', []),
                 'summary'        => data_get($analysis, 'summary'),
                 'ended_reason'   => data_get($payload, 'message.endedReason'),
-                'call_started_at'=> data_get($call, 'startedAt'),
-                'call_ended_at'  => data_get($call, 'endedAt'),
+                'call_started_at'=> $this->parseDate(data_get($call, 'startedAt')),
+                'call_ended_at'  => $this->parseDate(data_get($call, 'endedAt')),
             ]
         );
 
