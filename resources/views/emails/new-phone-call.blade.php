@@ -31,12 +31,12 @@
 
   @if($callData['started_at'])
   <div class="label">Call Started</div>
-  <div class="value">{{ \Carbon\Carbon::parse($callData['started_at'])->format('d M Y, H:i') }} UTC</div>
+  <div class="value">{{ $callData['started_at']->format('d M Y, H:i') }} UTC</div>
   @endif
 
   @if($callData['ended_at'])
   <div class="label">Call Ended</div>
-  <div class="value">{{ \Carbon\Carbon::parse($callData['ended_at'])->format('d M Y, H:i') }} UTC</div>
+  <div class="value">{{ $callData['ended_at']->format('d M Y, H:i') }} UTC</div>
   @endif
 
   <div class="label">Ended Reason</div>

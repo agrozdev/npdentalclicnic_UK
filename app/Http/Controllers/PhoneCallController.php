@@ -118,8 +118,8 @@ class PhoneCallController extends Controller
         $callData = [
             'id'            => data_get($call, 'id', 'N/A'),
             'caller_number' => data_get($call, 'customer.number', 'Unknown'),
-            'started_at'    => data_get($call, 'startedAt'),
-            'ended_at'      => data_get($call, 'endedAt'),
+            'started_at'    => $this->parseDate(data_get($call, 'startedAt')),
+            'ended_at'      => $this->parseDate(data_get($call, 'endedAt')),
             'ended_reason'  => data_get($payload, 'message.endedReason', 'N/A'),
             'recording_url' => data_get($artifact, 'recordingUrl'),
             'transcript'    => data_get($artifact, 'transcript', ''),
