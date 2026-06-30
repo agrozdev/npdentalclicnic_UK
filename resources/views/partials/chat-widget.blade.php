@@ -1,6 +1,13 @@
 {{-- AI Chat Widget --}}
 <div id="np-chat-widget">
 
+    {{-- Call FAB --}}
+    <a id="np-call-bubble" href="tel:{{ config('site.contact.phone_e164') }}" aria-label="Call us" title="{{ config('site.contact.phone_display') }}">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z" clip-rule="evenodd"/>
+        </svg>
+    </a>
+
     {{-- Bubble trigger --}}
     <button id="np-chat-bubble" aria-label="Open chat" title="Chat with us">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -92,6 +99,24 @@
 #np-chat-bubble:hover { background: #9a7d0a; transform: scale(1.05); }
 #np-chat-bubble svg { width: 28px; height: 28px; }
 #np-chat-bubble.np-hidden { display: none; }
+
+/* ── Call FAB ── */
+#np-call-bubble {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #2d2d4e;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(0,0,0,.3);
+    margin-bottom: 12px;
+    transition: background .2s, transform .2s;
+    text-decoration: none;
+}
+#np-call-bubble:hover { background: #1a1a35; transform: scale(1.05); }
+#np-call-bubble svg { width: 26px; height: 26px; }
 
 /* ── Window ── */
 #np-chat-window {
