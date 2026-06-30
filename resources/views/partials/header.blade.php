@@ -37,7 +37,7 @@
                         </div>
                         <div class="contact-now-box-content">
                             <p>{{ __('nav.need_help') }}</p>
-                            <h3><a href="https://wa.me/{{ config('site.contact.whatsapp_e164') }}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">{{ config('site.contact.whatsapp_display') }}</a></h3>
+                            <h3><a href="tel:{{ config('site.contact.phone_e164') }}" style="color:inherit;text-decoration:none;">{{ config('site.contact.phone_display') }}</a></h3>
                         </div>
                     </div>
                 </div>

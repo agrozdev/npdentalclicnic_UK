@@ -5,11 +5,11 @@ return [
     'tagline' => 'Premium dental implants & aligners in Bulgaria for UK patients',
 
     'contact' => [
-        'phone_display' => '+359 89 865 2858',
-        'phone_e164' => '+359898652858',
-        'whatsapp_e164' => '359887570020',
-        'whatsapp_display' => '+359 88 757 0020',
-        'whatsapp_phone_e164' => '+359887570020',
+        'phone_display' => '+44 7463 590020',
+        'phone_e164' => '+447463590020',
+        'whatsapp_e164' => '447463590020',
+        'whatsapp_display' => '+44 7463 590020',
+        'whatsapp_phone_e164' => '+447463590020',
         'email' => 'info@npdentalclinic.com',
         // Recipients for contact-form enquiries (not shown publicly).
         'form_recipients' => [
